@@ -49,7 +49,7 @@ def main_menu():
         global menu_error_header # let this subroutine use that var
         menu_header("Main menu")
         print('''\
-1) Play Blackjack
+1) Play
 2) Stats
 3) Config
 4) Quit
