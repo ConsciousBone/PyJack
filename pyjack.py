@@ -7,16 +7,16 @@
 # Created by @consciousbone for Hack Club Stardance
 # ASCII art from https://www.asciiart.eu/text-to-ascii-art
 
-# Imports
+# MARK: Imports
 import os
 
-# Consts
+# MARK: General constants
 PYJACK_VERSION = 0
 
-# General variables
+# MARK: General variables
 menu_error_header = ""
 
-# General subroutines
+# MARK: General subroutines
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear') # clear terminal
 
@@ -33,6 +33,7 @@ PyJack (v{PYJACK_VERSION})
 ─────────────────────────
 ''')
 
+# MARK: Menu subroutines
 def menu_header(page_name):
     global menu_error_header # let this subroutine use that var
 
@@ -88,8 +89,18 @@ def stats_menu():
             break
         else:
             menu_error_header = "Invalid option."
-    
 
+
+# MARK: Blackjack constants
+SUITS = ["♠", "♥", "♦", "♣"] # ooh fancy unicode thanks to https://en.wikipedia.org/wiki/Playing_cards_in_Unicode
+RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+
+# MARK: Blackjack variables
+deck = []
+
+# MARK: Blackjack subroutines
+def build_deck():
+    print("uhhhhhh")
 
 # Run the damn thing
 if __name__ == "__main__":
