@@ -9,6 +9,7 @@
 
 # MARK: Imports
 import os
+import random
 
 # MARK: General constants
 PYJACK_VERSION = 0
@@ -58,7 +59,7 @@ def main_menu():
 
         selected_menu_option = input("Select an option.\n> ") # get input
         if selected_menu_option == "1":
-            print("play")
+            play_blackjack()
             break
         elif selected_menu_option == "2":
             stats_menu()
@@ -100,7 +101,14 @@ deck = []
 
 # MARK: Blackjack subroutines
 def build_deck():
-    print("uhhhhhh")
+    for suit in SUITS:
+        for rank in RANKS:
+            deck.append((rank, suit))
+    random.shuffle(deck)
+
+def play_blackjack():
+    build_deck()
+    print("major todo")
 
 # Run the damn thing
 if __name__ == "__main__":
