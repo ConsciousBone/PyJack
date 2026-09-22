@@ -103,6 +103,7 @@ dealer = []
 
 # MARK: Blackjack subroutines/functions
 def build_deck():
+    deck.clear() # make sure deck doesn't end up massive
     for suit in SUITS:
         for rank in RANKS:
             deck.append((rank, suit))
@@ -127,11 +128,24 @@ def hand_value(hand):
 
     return value # finished counting!
 
-def play_blackjack():
-    build_deck()
-    print("major todo")
-    player == [deck.pop(), deck.pop()] # give player 2 cards
-    dealer == [deck.pop(), deck.pop()] # give dealer 2 cards
+def show_hand(name, hand, hide_first_card=False):
+    if hide_first_card: # hide the first card, used with dealer
+        cards = ["??"] + [f"{rank}{suit}" for rank, suit in hand[1:]] # skip first card since it's hidden
+        print(f"{name}: {' '.join(cards)}") # make sure cards are formatted nicely
+    else:
+        cards = [f"{rank}{suit}" for rank, suit in hand]
+        print(f"{name}: {' '.join(cards)} ({hand_value(hand)})") # also show hand value for player
+
+
+def play_blackjack(): # the main event 0.0
+    build_deck() # get a deck
+    menu_header("Play")
+
+    player = [deck.pop(), deck.pop()] # give player 2 cards
+    dealer = [deck.pop(), deck.pop()] # give dealer 2 cards
+
+    show_hand("Dealer", dealer, hide_first_card=True) # show dealer's hand, hiding first card
+    show_hand("Player", player) # show player's hand, ofc not hiding your own cards :/
 
 # Run the damn thing
 if __name__ == "__main__":
