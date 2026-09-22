@@ -98,17 +98,40 @@ RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
 # MARK: Blackjack variables
 deck = []
+player = []
+dealer = []
 
-# MARK: Blackjack subroutines
+# MARK: Blackjack subroutines/functions
 def build_deck():
     for suit in SUITS:
         for rank in RANKS:
             deck.append((rank, suit))
     random.shuffle(deck)
 
+def hand_value(hand):
+    value = 0
+    aces = 0
+
+    for rank, suit in hand:
+        if rank in ["J", "Q", "K"]: # handle the cards that aren't numbers, aces come later
+            value += 10
+        elif rank == "A": # now handle aces part 1; default to 11, but will move to 1 later if it would cause a bust
+            value += 11
+            aces += 1 # keep track of number of aces for later
+        else:
+            value += int(rank) # ez
+
+    while value > 21 and aces > 0: # handle aces part 2; turn aces one by one from 11 to 1
+        value -= 10
+        aces -= 1
+
+    return value # finished counting!
+
 def play_blackjack():
     build_deck()
     print("major todo")
+    player == [deck.pop(), deck.pop()] # give player 2 cards
+    dealer == [deck.pop(), deck.pop()] # give dealer 2 cards
 
 # Run the damn thing
 if __name__ == "__main__":
