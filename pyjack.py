@@ -60,7 +60,7 @@ def main_menu():
             print("play")
             break
         elif selected_menu_option == "2":
-            print("stats")
+            stats_menu()
             break
         elif selected_menu_option == "3":
             print("config")
@@ -70,6 +70,25 @@ def main_menu():
             break
         else:
             menu_error_header = "Invalid option."
+
+def stats_menu():
+    while True:
+        global menu_error_header
+        menu_header("Stats")
+
+        print("Coming soon!\n")
+
+        print('''\
+1) Back
+            ''')
+
+        selected_menu_option = input("Select an option.\n> ")
+        if selected_menu_option == "1":
+            main_menu()
+            break
+        else:
+            menu_error_header = "Invalid option."
+    
 
 
 # Run the damn thing
