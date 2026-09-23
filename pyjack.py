@@ -178,9 +178,12 @@ def play_blackjack(): # the main event 0.0
         choice = input("(H)it or (S)tand?\n> ")
         if choice.lower() == "h": # hit; resiliant to PEBCAK errors (google it :D)
             player.append(deck.pop()) # give player another card
-            clear()
         elif choice.lower() == "s": # stand; also resiliant to PEBCAK errors
             break # exit while loop, dealer's turn!
+        else:
+            print("Invalid option.")
+
+        print("") # another blank line for seperation
 
 # Run the damn thing
 if __name__ == "__main__":
