@@ -59,8 +59,22 @@ def main_menu():
 
         selected_menu_option = input("Select an option.\n> ") # get input
         if selected_menu_option == "1":
-            play_blackjack()
-            break
+            while True:
+                play_blackjack()
+
+                while True: # prevents the else case from starting another game
+                    play_again = input("Play again (y/N)?\n> ")
+                    if play_again.lower() == "y": # play again
+                        clear() # clear screen so terminal isnt cluttered with previous game
+                        break # play again
+                    elif play_again.lower() == "n": # don't play again, back to menu
+                        main_menu()
+                        return
+                    elif play_again.strip() == "": # user inputted nothing, default to no
+                        main_menu()
+                        return
+                    else: # user inputted something else entirely
+                        print("Invalid option.")
         elif selected_menu_option == "2":
             stats_menu()
         elif selected_menu_option == "3":
@@ -166,7 +180,7 @@ def play_blackjack(): # the main event 0.0
             break
         if player_value > 21: # player is bust, end
             print("Bust, you lose!")
-            break
+            return
 
         print("") # blank line for visual seperation
         choice = input("(H)it or (S)tand?\n> ")
@@ -186,27 +200,27 @@ def play_blackjack(): # the main event 0.0
     show_hand("Player", player) # show player's hand, ofc not hiding your own cards :/
 
     while hand_value(dealer) < 17: # dealer must stand on 17
-        print("")
-        print("dealer hits!")
+        print("") # blank line for seperation
+        print("Dealer hits!")
         dealer.append(deck.pop()) # give dealer another card
+
+        print("")
         show_hand("Dealer", dealer) # show dealer's hand, *not* hiding first card
         show_hand("Player", player) # show player's hand, ofc not hiding your own cards :/
-        print("")
 
     dealer_value = hand_value(dealer)
     player_value = hand_value(player)
 
     if dealer_value > 21: # dealer is bust :D
-        print("Dealer bust!")
+        print("\nDealer bust!")
     elif dealer_value > player_value: # dealer wins
-        print("Dealer wins!")
+        print("\nDealer wins!")
     elif dealer_value < player_value: # player wins
-        print("You win!")
+        print("\nYou win!")
     else: # draw
         print("It\'s a draw!")
 
     print("")
-
 
 # MARK: Run the damn thing
 if __name__ == "__main__":
