@@ -162,8 +162,25 @@ def play_blackjack(): # the main event 0.0
     player = [deck.pop(), deck.pop()] # give player 2 cards
     dealer = [deck.pop(), deck.pop()] # give dealer 2 cards
 
-    show_hand("Dealer", dealer, hide_first_card=True) # show dealer's hand, hiding first card
-    show_hand("Player", player) # show player's hand, ofc not hiding your own cards :/
+    while True: # player's turn!
+        show_hand("Dealer", dealer, hide_first_card=True) # show dealer's hand, hiding first card
+        show_hand("Player", player) # show player's hand, ofc not hiding your own cards :/
+
+        player_value = hand_value(player)
+        if player_value == 21: # player is at blackjack, end
+            print("Blackjack!")
+            break
+        if player_value > 21: # player is bust, end
+            print("Bust... You lose!")
+            break
+
+        print("") # blank line for visual seperation
+        choice = input("(H)it or (S)tand?\n> ")
+        if choice.lower() == "h": # hit; resiliant to PEBCAK errors (google it :D)
+            player.append(deck.pop()) # give player another card
+            clear()
+        elif choice.lower() == "s": # stand; also resiliant to PEBCAK errors
+            break # exit while loop, dealer's turn!
 
 # Run the damn thing
 if __name__ == "__main__":
