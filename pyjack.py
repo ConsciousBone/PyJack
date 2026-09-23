@@ -171,7 +171,7 @@ def play_blackjack(): # the main event 0.0
             print("Blackjack!")
             break
         if player_value > 21: # player is bust, end
-            print("Bust... You lose!")
+            print("Bust, you lose!")
             break
 
         print("") # blank line for visual seperation
@@ -184,6 +184,35 @@ def play_blackjack(): # the main event 0.0
             print("Invalid option.")
 
         print("") # another blank line for seperation
+
+    # dealer's turn!
+    print("\nDealer's turn!\n")
+
+    show_hand("Dealer", dealer) # show dealer's hand, *not* hiding first card
+    show_hand("Player", player) # show player's hand, ofc not hiding your own cards :/
+
+    while hand_value(dealer) < 17: # dealer must stand on 17
+        print("")
+        print("dealer hits!")
+        dealer.append(deck.pop()) # give dealer another card
+        show_hand("Dealer", dealer) # show dealer's hand, *not* hiding first card
+        show_hand("Player", player) # show player's hand, ofc not hiding your own cards :/
+        print("")
+
+    dealer_value = hand_value(dealer)
+    player_value = hand_value(player)
+
+    if dealer_value > 21: # dealer is bust :D
+        print("Dealer bust!")
+    elif dealer_value > player_value: # dealer wins
+        print("Dealer wins!")
+    elif dealer_value < player_value: # player wins
+        print("You win!")
+    else: # draw
+        print("It\'s a draw!")
+
+    print("")
+
 
 # Run the damn thing
 if __name__ == "__main__":
