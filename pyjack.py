@@ -4,7 +4,7 @@
 # ░▀░░░░▀░░▀▀░░▀░▀░▀▀▀░▀░▀░
 # ░░░░░░░░░░░░░░░░░░░░░░░░░
 # PyJack - Blackjack but in a single Python file!
-# Created by @consciousbone for Hack Club Stardance
+# Created by @consciousbone for Hack Club's Stardance
 # ASCII art from https://www.asciiart.eu/text-to-ascii-art
 
 # MARK: Imports
@@ -63,10 +63,8 @@ def main_menu():
             break
         elif selected_menu_option == "2":
             stats_menu()
-            break
         elif selected_menu_option == "3":
             config_menu()
-            break
         elif selected_menu_option == "4":
             print("Thanks for playing!")
             break
@@ -86,8 +84,7 @@ def stats_menu():
 
         selected_menu_option = input("Select an option.\n> ")
         if selected_menu_option == "1":
-            main_menu()
-            break
+            return
         else:
             menu_error_header = "Invalid option."
 
@@ -104,8 +101,7 @@ def config_menu():
 
         selected_menu_option = input("Select an option.\n> ")
         if selected_menu_option == "1":
-            main_menu()
-            break
+            return
         else:
             menu_error_header = "Invalid option."
 
@@ -116,8 +112,6 @@ RANKS = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
 
 # MARK: Blackjack variables
 deck = []
-player = []
-dealer = []
 
 # MARK: Blackjack subroutines/functions
 def build_deck():
@@ -214,6 +208,6 @@ def play_blackjack(): # the main event 0.0
     print("")
 
 
-# Run the damn thing
+# MARK: Run the damn thing
 if __name__ == "__main__":
-    main_menu()
+    main_menu() # run main menu subroutine
