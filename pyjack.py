@@ -10,6 +10,7 @@
 # MARK: Imports
 import os
 import random
+import time
 
 # MARK: General constants
 PYJACK_VERSION = 0
@@ -58,28 +59,28 @@ def main_menu():
         ''')
 
         selected_menu_option = input("Select an option.\n> ") # get input
-        if selected_menu_option == "1":
-            while True:
+        if selected_menu_option == "1": # play
+            while True: # loop
                 play_blackjack()
 
                 while True: # prevents the else case from starting another game
-                    play_again = input("Play again (y/N)?\n> ")
+                    play_again = input("Play again (Y/n)?\n> ")
                     if play_again.lower() == "y": # play again
                         clear() # clear screen so terminal isnt cluttered with previous game
                         break # play again
                     elif play_again.lower() == "n": # don't play again, back to menu
                         main_menu()
                         return
-                    elif play_again.strip() == "": # user inputted nothing, default to no
-                        main_menu()
-                        return
+                    elif play_again.strip() == "": # user inputted nothing, default to yes
+                        clear()
+                        break
                     else: # user inputted something else entirely
                         print("Invalid option.")
-        elif selected_menu_option == "2":
+        elif selected_menu_option == "2": # stats
             stats_menu()
-        elif selected_menu_option == "3":
+        elif selected_menu_option == "3": # config
             config_menu()
-        elif selected_menu_option == "4":
+        elif selected_menu_option == "4": # quit
             print("Thanks for playing!")
             break
         else:
@@ -176,10 +177,10 @@ def play_blackjack(): # the main event 0.0
 
         player_value = hand_value(player)
         if player_value == 21: # player is at blackjack, end
-            print("Blackjack!")
+            print("Blackjack!\n")
             break
         if player_value > 21: # player is bust, end
-            print("Bust, you lose!")
+            print("Bust, you lose!\n")
             return
 
         print("") # blank line for visual seperation
@@ -200,6 +201,8 @@ def play_blackjack(): # the main event 0.0
     show_hand("Player", player) # show player's hand, ofc not hiding your own cards :/
 
     while hand_value(dealer) < 17: # dealer must stand on 17
+        time.sleep(random.uniform(0.5, 1)) # wait for random amount of time between 0.5s and 1s
+
         print("") # blank line for seperation
         print("Dealer hits!")
         dealer.append(deck.pop()) # give dealer another card
@@ -218,7 +221,7 @@ def play_blackjack(): # the main event 0.0
     elif dealer_value < player_value: # player wins
         print("\nYou win!")
     else: # draw
-        print("It\'s a draw!")
+        print("\nIt\'s a draw!")
 
     print("")
 
