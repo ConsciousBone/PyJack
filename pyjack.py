@@ -13,7 +13,7 @@ import random
 import time
 
 # MARK: General constants
-PYJACK_VERSION = 0
+PYJACK_VERSION = 1
 
 # MARK: General variables
 menu_error_header = ""
