@@ -12,7 +12,7 @@ It runs almost anywhere you can run Python (I've not tested this claim but there
 1. Download Python from [this page](https://www.python.org/downloads/) if you don't already have it installed.
 2. Download the latest release of PyJack from this page.
 3. Run the downloaded `pyjack.py` file. All the required JSON files will be automatically created in a new `pyjack_data` directory inside the directory `pyjack.py` is inside of!
-4. Play the game! Only the keyboard is required for this. You navigate around the menus using the number keys, and play the game using H and S to hit or stand. Simple!
+4. Play the game! Only the keyboard is required for this. You navigate around the menus using the number keys, and actually control the game using H and S to hit or stand. Simple!
 
 # Why?
 Why not?
