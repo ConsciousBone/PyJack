@@ -14,7 +14,7 @@ import time
 import json
 
 # MARK: General constants
-PYJACK_VERSION = 1
+PYJACK_VERSION = 2
 PYJACK_STATS_FILENAME = "pyjack_data/stats.json"
 PYJACK_CONFIG_FILENAME = "pyjack_data/config.json"
 
