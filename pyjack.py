@@ -16,6 +16,7 @@ import json
 # MARK: General constants
 PYJACK_VERSION = 1
 PYJACK_STATS_FILENAME = "pyjack_data/stats.json"
+PYJACK_CONFIG_FILENAME = "pyjack_data/config.json"
 
 # MARK: General variables
 menu_error_header = ""
@@ -40,7 +41,7 @@ PyJack (v{PYJACK_VERSION})
 def initialise_files(): # partially stolen from another thing i wrote, https://github.com/R002441/HackTrack
     os.makedirs("pyjack_data", exist_ok=True)
 
-    if not os.path.exists(PYJACK_STATS_FILENAME):
+    if not os.path.exists(PYJACK_STATS_FILENAME): # write default stats file if it doesn't exist
         default_stats = {
             "games_won": 0,
             "games_lost": 0,
@@ -49,6 +50,15 @@ def initialise_files(): # partially stolen from another thing i wrote, https://g
 
         with open(PYJACK_STATS_FILENAME, "w", encoding="utf-8") as file:
             json.dump(default_stats, file, indent=4)
+
+    if not os.path.exists(PYJACK_CONFIG_FILENAME): # write default config file if it doesn't exist
+            default_config = {
+                "show_ascii_art": 1,
+                "dealer_hits_delay": 1
+            }
+    
+            with open(PYJACK_CONFIG_FILENAME, "w", encoding="utf-8") as file:
+                json.dump(default_config, file, indent=4)
 
 
 # MARK: Menu subroutines
@@ -246,4 +256,5 @@ def play_blackjack(): # the main event 0.0
 
 # MARK: Run the damn thing
 if __name__ == "__main__":
+    initialise_files() # create data files if they don't exist
     main_menu() # run main menu subroutine
