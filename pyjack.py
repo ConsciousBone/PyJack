@@ -42,7 +42,7 @@ PyJack (v{PYJACK_VERSION})
 ─────────────────────────
     ''')
     else: # don't show ascii art
-        print(f"PyJack (v{PYJACK_VERSION})\n{page_name}")
+        print(f"\nPyJack (v{PYJACK_VERSION})\n{page_name}\n\n─────────────────────────\n")
 
 # MARK: Data subroutines/functions
 # Partially stolen from another thing I wrote, https://github.com/R002441/HackTrack
@@ -70,7 +70,7 @@ def initialise_files():
 
 def read_stats():
     if not os.path.exists(PYJACK_STATS_FILENAME):
-        return []
+        return {}
     with open(PYJACK_STATS_FILENAME, "r") as file:
         return json.load(file) # read json file
 
@@ -80,7 +80,7 @@ def write_stats(stats):
 
 def read_config():
     if not os.path.exists(PYJACK_CONFIG_FILENAME):
-        return []
+        return {}
     with open(PYJACK_CONFIG_FILENAME, "r") as file:
         return json.load(file) # read json file
 
