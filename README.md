@@ -4,9 +4,12 @@ It's blackjack, but in a single Python file.
 Created for Hack Club's Stardance!  
 It runs almost anywhere you can run Python (I've not tested this claim but there's nothing really stopping it!), and requires such low system specs that I think the toaster sitting in your kitchen could comfortably run it.  
 
-# Screenshots
+# Demos
+## Screenshots
 <img src="/screenshots/1.png" width=384> <img src="/screenshots/2.png" width=384>  
 <img src="/screenshots/3.png" width=384> <img src="/screenshots/4.png" width=384>
+## Video
+[YouTube video (unlisted)](https://youtu.be/rOiauafCkaA)
 
 # How to play
 1. Download Python from [this page](https://www.python.org/downloads/) if you don't already have it installed.
