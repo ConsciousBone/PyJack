@@ -69,13 +69,16 @@ def main_menu():
                         clear() # clear screen so terminal isnt cluttered with previous game
                         break # play again
                     elif play_again.lower() == "n": # don't play again, back to menu
-                        main_menu()
-                        return
+                        clear()
+                        break
                     elif play_again.strip() == "": # user inputted nothing, default to yes
                         clear()
                         break
                     else: # user inputted something else entirely
                         print("Invalid option.")
+
+                if play_again.lower() == "n": # don't play again, back to menu
+                        break # exit the play again loop
         elif selected_menu_option == "2": # stats
             stats_menu()
         elif selected_menu_option == "3": # config
