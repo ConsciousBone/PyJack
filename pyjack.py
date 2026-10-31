@@ -178,12 +178,37 @@ def config_menu():
 
         print() # blank line for seperation 
         print('''\
-1) Back
+1) Toggle "Show ASCII art"
+2) Toggle "Dealer has delay when hitting"
+3) Back
             ''')
 
         selected_menu_option = input("Select an option.\n> ")
         if selected_menu_option == "1":
+            if config.get('show_ascii_art', 1) == 1:
+                config['show_ascii_art'] = 0
+                write_config(config)
+                menu_error_header = "Toggled \"Show ASCII art\"."
+
+            elif config.get('show_ascii_art', 1) == 0:
+                config['show_ascii_art'] = 1
+                write_config(config)
+                menu_error_header = "Toggled \"Show ASCII art\"."
+
+        elif selected_menu_option == "2":
+            if config.get('dealer_hits_delay', 1) == 1:
+                config['dealer_hits_delay'] = 0
+                write_config(config)
+                menu_error_header = "Toggled \"Dealer has delay when hitting\"."
+
+            elif config.get('dealer_hits_delay', 1) == 0:
+                config['dealer_hits_delay'] = 1
+                write_config(config)
+                menu_error_header = "Toggled \"Dealer has delay when hitting\"."
+
+        elif selected_menu_option == "3":
             return
+        
         else:
             menu_error_header = "Invalid option."
 
