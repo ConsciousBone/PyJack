@@ -15,8 +15,7 @@ import json
 
 # MARK: General constants
 PYJACK_VERSION = 2
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "pyjack_data")
+DATA_DIR = os.path.join(os.path.expanduser("~"), ".pyjack_data")
 
 PYJACK_STATS_FILENAME = os.path.join(DATA_DIR, "stats.json")
 PYJACK_CONFIG_FILENAME = os.path.join(DATA_DIR, "config.json")
@@ -343,6 +342,9 @@ def play_blackjack(): # the main event 0.0
     print("")
 
 # MARK: Run the damn thing
-if __name__ == "__main__":
+def main():
     initialise_files() # create data files if they don't exist
-    main_menu() # run main menu subroutine
+    main_menu() # run main menu
+
+if __name__ == "__main__":
+    main()
