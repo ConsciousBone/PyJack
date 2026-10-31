@@ -25,8 +25,12 @@ menu_error_header = ""
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear') # clear terminal
 
-def print_ascii_logo(page_name):
-    print(f'''
+def print_logo(page_name):
+    config = read_config()
+    use_ascii_logo = config.get('show_ascii_art', 1)
+
+    if use_ascii_logo == 1: # show ascii art
+        print(f'''
 ░░░░░░░░░░░░░░░░░░░░░░░░░
 ░█▀█░█░█░▀▀█░█▀█░█▀▀░█░█░
 ░█▀▀░░█░░░░█░█▀█░█░░░█▀▄░
@@ -36,9 +40,13 @@ PyJack (v{PYJACK_VERSION})
 {page_name}
 
 ─────────────────────────
-''')
+    ''')
+    else: # don't show ascii art
+        print(f"PyJack (v{PYJACK_VERSION})\n{page_name}")
 
-def initialise_files(): # partially stolen from another thing i wrote, https://github.com/R002441/HackTrack
+# MARK: Data subroutines/functions
+# Partially stolen from another thing I wrote, https://github.com/R002441/HackTrack
+def initialise_files():
     os.makedirs("pyjack_data", exist_ok=True)
 
     if not os.path.exists(PYJACK_STATS_FILENAME): # write default stats file if it doesn't exist
@@ -60,13 +68,32 @@ def initialise_files(): # partially stolen from another thing i wrote, https://g
             with open(PYJACK_CONFIG_FILENAME, "w", encoding="utf-8") as file:
                 json.dump(default_config, file, indent=4)
 
+def read_stats():
+    if not os.path.exists(PYJACK_STATS_FILENAME):
+        return []
+    with open(PYJACK_STATS_FILENAME, "r") as file:
+        return json.load(file) # read json file
+
+def write_stats(stats):
+    with open(PYJACK_STATS_FILENAME, "w") as file:
+        json.dump(stats, file, indent=2) # write back into json
+
+def read_config():
+    if not os.path.exists(PYJACK_CONFIG_FILENAME):
+        return []
+    with open(PYJACK_CONFIG_FILENAME, "r") as file:
+        return json.load(file) # read json file
+
+def write_config(config):
+    with open(PYJACK_CONFIG_FILENAME, "w") as file:
+        json.dump(config, file, indent=2) # write back into json
 
 # MARK: Menu subroutines
 def menu_header(page_name):
     global menu_error_header # let this subroutine use that var
 
     clear() # very clean very fancy very wow
-    print_ascii_logo(page_name)
+    print_logo(page_name)
 
     if menu_error_header != "": # theres an error which needs showing, do it!
         print(f"{menu_error_header}\n")
