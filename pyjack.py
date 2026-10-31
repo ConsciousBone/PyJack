@@ -15,8 +15,11 @@ import json
 
 # MARK: General constants
 PYJACK_VERSION = 2
-PYJACK_STATS_FILENAME = "pyjack_data/stats.json"
-PYJACK_CONFIG_FILENAME = "pyjack_data/config.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "pyjack_data")
+
+PYJACK_STATS_FILENAME = os.path.join(DATA_DIR, "stats.json")
+PYJACK_CONFIG_FILENAME = os.path.join(DATA_DIR, "config.json")
 
 # MARK: General variables
 menu_error_header = ""
@@ -47,7 +50,7 @@ PyJack (v{PYJACK_VERSION})
 # MARK: Data subroutines/functions
 # Partially stolen from another thing I wrote, https://github.com/R002441/HackTrack
 def initialise_files():
-    os.makedirs("pyjack_data", exist_ok=True)
+    os.makedirs(DATA_DIR, exist_ok=True)
 
     if not os.path.exists(PYJACK_STATS_FILENAME): # write default stats file if it doesn't exist
         default_stats = {
