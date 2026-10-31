@@ -1,9 +1,7 @@
-<div align="center">
-<h1>PyJack</h1>
-![Hackatime Badge](https://hackatime-badge.hackclub.com/U0998E0AFFD/PyJack)
-<p>It's blackjack, but in a single Python file!</p>
-<small>Created for Hack Club's Stardance!</small>
-</div>
+# PyJack</h1>
+![Hackatime Badge](https://hackatime-badge.hackclub.com/U0998E0AFFD/PyJack)  
+It's blackjack, but in a single Python file.  
+Created for Hack Club's Stardance!
 
 # How to play
 1. Download the latest release
