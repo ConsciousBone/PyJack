@@ -1,4 +1,4 @@
-# PyJack</h1>
+# PyJack
 ![Hackatime Badge](https://hackatime-badge.hackclub.com/U0998E0AFFD/PyJack)  
 It's blackjack, but in a single Python file.  
 Created for Hack Club's Stardance!  
@@ -6,12 +6,18 @@ It runs almost anywhere you can run Python (I've not tested this claim but there
 
 # Demos
 ## Screenshots
-<img src="/screenshots/1.png" width=384> <img src="/screenshots/2.png" width=384>  
-<img src="/screenshots/3.png" width=384> <img src="/screenshots/4.png" width=384>
+<img src="https://raw.githubusercontent.com/ConsciousBone/PyJack/master/screenshots/1.png" width=384> <img src="https://raw.githubusercontent.com/ConsciousBone/PyJack/master/screenshots/2.png" width=384>  
+<img src="https://raw.githubusercontent.com/ConsciousBone/PyJack/master/screenshots/3.png" width=384> <img src="https://raw.githubusercontent.com/ConsciousBone/PyJack/master/screenshots/4.png" width=384>
 ## Video
 [YouTube video (unlisted)](https://youtu.be/rOiauafCkaA)
 
 # How to play
+## PyPI (recommended!)
+1. Download Python from [this page](https://www.python.org/downloads/) if you don't already have it installed.
+2. Run `pip install pyjack-blackjack` and wait for it to download.
+3. Run `pyjack`. All the required JSON files will be automatically created in a new `.pyjack_data` directory inside your home folder!
+4. Play the game! Only the keyboard is required for this. You navigate around the menus using the number keys, and actually control the game using H and S to hit or stand. Simple!
+## GitHub Releases
 1. Download Python from [this page](https://www.python.org/downloads/) if you don't already have it installed.
 2. Download the latest release of PyJack from [this page](https://github.com/ConsciousBone/PyJack/releases/).
 3. Run the downloaded `pyjack.py` file. All the required JSON files will be automatically created in a new `.pyjack_data` directory inside your home folder!
