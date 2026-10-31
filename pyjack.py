@@ -257,6 +257,8 @@ def show_hand(name, hand, hide_first_card=False):
 
 
 def play_blackjack(): # the main event 0.0
+    config = read_config()
+
     build_deck() # get a deck
     menu_header("Play")
 
@@ -293,7 +295,8 @@ def play_blackjack(): # the main event 0.0
     show_hand("Player", player) # show player's hand, ofc not hiding your own cards :/
 
     while hand_value(dealer) < 17: # dealer must stand on 17
-        time.sleep(random.uniform(0.5, 1)) # wait for random amount of time between 0.5s and 1s
+        if config.get('dealer_hits_delay', 1) == 1: # does config allow for a delay
+            time.sleep(random.uniform(0.5, 1)) # wait for random amount of time between 0.5s and 1s
 
         print("") # blank line for seperation
         print("Dealer hits!")
