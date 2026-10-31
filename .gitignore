@@ -1,1 +1,6 @@
-pyjack_data
+pyjack_data/
+.venv/
+dist/
+build/
+*.egg-info/
+__pycache__/
