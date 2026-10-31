@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyjack-blackjack"
+version = "2"
+authors = [
+  { name="ConsciousBone", email="eplant@consciousb.one" },
+]
+description = "A simple blackjack game, but in a single Python file... How revolutionary!"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[project.urls]
+Homepage = "https://github.com/ConsciousBone/PyJack"
+
+[project.scripts]
+pyjack = "pyjack:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+py-modules = ["pyjack"]
