@@ -145,10 +145,15 @@ def main_menu():
 def stats_menu():
     while True:
         global menu_error_header
+        stats = read_stats()
+
         menu_header("Stats")
 
-        print("Coming soon!\n")
+        print(f"Games won: {stats['games_won']}")
+        print(f"Games lost: {stats['games_lost']}")
+        print(f"Games drew: {stats['games_drew']}")
 
+        print() # blank line for seperation
         print('''\
 1) Back
             ''')
@@ -257,6 +262,7 @@ def show_hand(name, hand, hide_first_card=False):
 
 
 def play_blackjack(): # the main event 0.0
+    stats = read_stats()
     config = read_config()
 
     build_deck() # get a deck
@@ -274,6 +280,8 @@ def play_blackjack(): # the main event 0.0
             print("Blackjack!\n")
             break
         if player_value > 21: # player is bust, end
+            stats['games_lost'] = stats['games_lost'] + 1
+            write_stats(stats)
             print("Bust, you lose!\n")
             return
 
@@ -310,12 +318,20 @@ def play_blackjack(): # the main event 0.0
     player_value = hand_value(player)
 
     if dealer_value > 21: # dealer is bust :D
+        stats['games_won'] = stats['games_won'] + 1
+        write_stats(stats)
         print("\nDealer bust!")
     elif dealer_value > player_value: # dealer wins
+        stats['games_lost'] = stats['games_lost'] + 1
+        write_stats(stats)
         print("\nDealer wins!")
     elif dealer_value < player_value: # player wins
+        stats['games_won'] = stats['games_won'] + 1
+        write_stats(stats)
         print("\nYou win!")
     else: # draw
+        stats['games_drew'] = stats['games_drew'] + 1
+        write_stats(stats)
         print("\nIt\'s a draw!")
 
     print("")
