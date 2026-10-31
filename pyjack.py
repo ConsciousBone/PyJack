@@ -162,10 +162,21 @@ def stats_menu():
 def config_menu():
     while True:
         global menu_error_header
+        config = read_config()
+
         menu_header("Config")
 
-        print("Coming soon!\n")
+        print("Current config:") # there's probably a much better way to do this, but this is easy :)
+        if config.get('show_ascii_art', 1) == 1:
+            print("Show ASCII art: Yes")
+        elif config.get('show_ascii_art', 1) == 0:
+            print("Show ASCII art: No")
+        if config.get('dealer_hits_delay', 1) == 1:
+            print("Dealer has delay when hitting: Yes")
+        elif config.get('dealer_hits_delay', 1) == 0:
+            print("Dealer has delay when hitting: No")
 
+        print() # blank line for seperation 
         print('''\
 1) Back
             ''')
