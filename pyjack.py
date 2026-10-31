@@ -11,9 +11,11 @@
 import os
 import random
 import time
+import json
 
 # MARK: General constants
 PYJACK_VERSION = 1
+PYJACK_STATS_FILENAME = "pyjack_data/stats.json"
 
 # MARK: General variables
 menu_error_header = ""
@@ -34,6 +36,20 @@ PyJack (v{PYJACK_VERSION})
 
 ─────────────────────────
 ''')
+
+def initialise_files(): # partially stolen from another thing i wrote, https://github.com/R002441/HackTrack
+    os.makedirs("pyjack_data", exist_ok=True)
+
+    if not os.path.exists(PYJACK_STATS_FILENAME):
+        default_stats = {
+            "games_won": 0,
+            "games_lost": 0,
+            "games_drew": 0
+        }
+
+        with open(PYJACK_STATS_FILENAME, "w", encoding="utf-8") as file:
+            json.dump(default_stats, file, indent=4)
+
 
 # MARK: Menu subroutines
 def menu_header(page_name):
