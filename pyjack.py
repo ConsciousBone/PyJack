@@ -277,7 +277,10 @@ def play_blackjack(): # the main event 0.0
 
         player_value = hand_value(player)
         if player_value == 21: # player is at blackjack, end
-            print("Blackjack!\n")
+            if len(player) == 2:
+                print("Blackjack!\n")
+            else:
+                print("21!\n")
             break
         if player_value > 21: # player is bust, end
             stats['games_lost'] = stats['games_lost'] + 1
