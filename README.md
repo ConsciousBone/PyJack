@@ -4,13 +4,16 @@ It's blackjack, but in a single Python file.
 Created for Hack Club's Stardance!  
 It runs almost anywhere you can run Python (I've not tested this claim but there's nothing really stopping it!), and requires such low system specs that I think the toaster sitting in your kitchen could comfortably run it.  
 
-# Screenshots
+# Demos
+## Screenshots
 <img src="/screenshots/1.png" width=384> <img src="/screenshots/2.png" width=384>  
 <img src="/screenshots/3.png" width=384> <img src="/screenshots/4.png" width=384>
+## Video
+[YouTube video (unlisted)](https://youtu.be/rOiauafCkaA)
 
 # How to play
 1. Download Python from [this page](https://www.python.org/downloads/) if you don't already have it installed.
-2. Download the latest release of PyJack from this page.
+2. Download the latest release of PyJack from [this page](https://github.com/ConsciousBone/PyJack/releases/).
 3. Run the downloaded `pyjack.py` file. All the required JSON files will be automatically created in a new `pyjack_data` directory inside the directory `pyjack.py` is inside of!
 4. Play the game! Only the keyboard is required for this. You navigate around the menus using the number keys, and actually control the game using H and S to hit or stand. Simple!
 
